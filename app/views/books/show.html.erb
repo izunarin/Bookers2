@@ -5,7 +5,9 @@
     <tbody>
       <tr>
         <td>
+          <%= link_to user_path(@book.user.id) do %>
            <%= image_tag @user.get_image(100,100) %><br>
+           <% end %>
             <%= link_to user_path(@user) do %>
             <%= @user.name %>
             <% end %>
@@ -18,11 +20,14 @@
         <td>
           <%= @book.body %>
         </td>
+         <% if current_user== @book.user %>
         <td>
           <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
         </td>
         <td>
           <%= link_to "Destroy",book_path(@book.id),method: :delete, "data-confirm" =>"本当に削除しますか？", class: "btn btn-sm btn-danger"  %>
+         <% else %>
+         <% end %>
         </td>
       </tr>
     </tbody>
