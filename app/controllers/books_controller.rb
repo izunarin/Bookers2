@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+
   before_action :correct_user, only: [:edit, :update]
   def new
     @book = Book.new
